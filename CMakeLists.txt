@@ -21,6 +21,9 @@ set(PROJECT_SOURCES
         loginwindow.cpp
         loginwindow.h
         loginwindow.ui
+        homewindow.cpp
+        homewindow.h
+        homewindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

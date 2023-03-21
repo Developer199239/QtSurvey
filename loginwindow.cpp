@@ -8,7 +8,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QDebug>
-#include "mainwindow.h"
+#include "homewindow.h"
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -60,9 +60,9 @@ void LoginWindow::handleResponse() {
         QByteArray data = reply->readAll();
         qDebug() << data;
 
-        MainWindow *main = new MainWindow(this);
-            main->show();
-            this->hide();
+        HomeWindow *homeWindow = new HomeWindow(this);
+        homeWindow->show();
+        this->hide();
     } else {
         qDebug() << "Error: " << reply->errorString();
     }
