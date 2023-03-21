@@ -2,7 +2,7 @@
 #define LOGINWINDOW_H
 
 #include <QMainWindow>
-#include "restapi.h"
+//#include "restapi.h"
 
 namespace Ui {
 class LoginWindow;
@@ -18,7 +18,9 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-    void onReplyReceived(QByteArray response);
+//    void onReplyReceived(QByteArray response);
+    void makeRequest(QString leUserId, QString lePassword);
+    void handleResponse();
 
 private:
     Ui::LoginWindow *ui;
