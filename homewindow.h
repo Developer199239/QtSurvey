@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QScrollArea>
 #include <QVBoxLayout>
+#include <QRadioButton>
 
 namespace Ui {
 class HomeWindow;

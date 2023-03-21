@@ -3,6 +3,7 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QGroupBox>
 
 HomeWindow::HomeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,18 +19,44 @@ HomeWindow::HomeWindow(QWidget *parent) :
 
     // Add a series of labels to the layout (these are the items that may not fit in the available space)
     for (int i = 1; i <= 20; i++) {
-        // Create the label and line edit widgets
-        QLabel *label = new QLabel("Question item: " + QString::number(i));
-        QLineEdit *lineEdit = new QLineEdit;
-        lineEdit->setPlaceholderText("Answer for question "+QString::number(i));
+        if(i % 2 == 0) {
+            // Create the label and line edit widgets
+            QLabel *label = new QLabel("Question item: " + QString::number(i));
+            QLineEdit *lineEdit = new QLineEdit;
+            lineEdit->setPlaceholderText("Answer for question "+QString::number(i));
 
-        // Add the label and line edit widgets to a new vertical layout
-        QVBoxLayout *layout = new QVBoxLayout;
-        layout->addWidget(label);
-        layout->addWidget(lineEdit);
+            // Add the label and line edit widgets to a new vertical layout
+            QVBoxLayout *layout = new QVBoxLayout;
+            layout->addWidget(label);
+            layout->addWidget(lineEdit);
 
-        // Add the new vertical layout to the main scrollable layout
-        scrollableLayout->addLayout(layout);
+            // Add the new vertical layout to the main scrollable layout
+            scrollableLayout->addLayout(layout);
+        } else {
+            QLabel *label = new QLabel("Question item: " + QString::number(i));
+            // Create the group box for the first question
+            QGroupBox *groupBox1 = new QGroupBox;
+
+            // Create the radio buttons for the first question
+            QRadioButton *radioButton1a = new QRadioButton("Option 1a");
+            QRadioButton *radioButton1b = new QRadioButton("Option 1b");
+            QRadioButton *radioButton1c = new QRadioButton("Option 1c");
+
+            // Create a vertical layout for the first question's radio buttons
+            QVBoxLayout *layout1 = new QVBoxLayout;
+            layout1->addWidget(radioButton1a);
+            layout1->addWidget(radioButton1b);
+            layout1->addWidget(radioButton1c);
+
+            // Set the layout for the first question's group box
+            groupBox1->setLayout(layout1);
+
+            QVBoxLayout *layout = new QVBoxLayout;
+            layout->addWidget(label);
+            layout->addWidget(groupBox1);
+
+            scrollableLayout->addLayout(layout);
+        }
     }
 
     // Create a button and add it to a vertical layout
