@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/icons">
         <file>splash_bg.png</file>
+        <file>loading-gif.gif</file>
     </qresource>
 </RCC>

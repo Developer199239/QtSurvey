@@ -22,6 +22,8 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
     ui->leUserId->setText("105418");
     ui->lePassword->setText("123456");
+
+
 }
 
 LoginWindow::~LoginWindow()
@@ -42,6 +44,7 @@ void LoginWindow::on_pushButton_clicked()
 
 
 void LoginWindow::makeRequest(QString leUserId, QString lePassword) {
+    myTask = new MyTask;
     QByteArray postData;
         postData.append("pin=");
         postData.append(leUserId.toUtf8());
@@ -54,11 +57,14 @@ void LoginWindow::makeRequest(QString leUserId, QString lePassword) {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     // Connect the reply's finished() signal to a slot that will handle the response
     QNetworkReply *reply = manager->post(request, postData);
+//    connect(reply, &QNetworkReply::downloadProgress, this, &LoginWindow::setProgress);
     connect(reply, SIGNAL(finished()), this, SLOT(handleResponse()));
-
 }
 
+
+
 void LoginWindow::handleResponse() {
+    myTask->cancel();
     // Get the HTTP reply from the sender object
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
 

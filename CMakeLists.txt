@@ -26,6 +26,8 @@ set(PROJECT_SOURCES
         homewindow.ui
         appconstant.cpp
         appconstant.h
+        mytask.cpp
+        mytask.h
 
 )
 
