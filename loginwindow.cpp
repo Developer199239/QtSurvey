@@ -77,6 +77,7 @@ void LoginWindow::handleResponse() {
         this->hide();
     } else {
         qDebug() << "Error: " << reply->errorString();
+        QMessageBox::warning(this, "Login Error",reply->errorString());
     }
 
     // Clean up the reply object

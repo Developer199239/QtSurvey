@@ -27,6 +27,7 @@ private slots:
 private:
     Ui::HomeWindow *ui;
     QList<QLineEdit *> m_answerFields;
+    QVBoxLayout *scrollableLayout;
 };
 
 #endif // HOMEWINDOW_H
