@@ -2,7 +2,7 @@
 #define LOGINWINDOW_H
 
 #include <QMainWindow>
-//#include "restapi.h"
+#include <QProgressBar>
 
 namespace Ui {
 class LoginWindow;
@@ -18,12 +18,12 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-//    void onReplyReceived(QByteArray response);
     void makeRequest(QString leUserId, QString lePassword);
     void handleResponse();
 
 private:
     Ui::LoginWindow *ui;
+    QProgressBar* progressBar;
 };
 
 #endif // LOGINWINDOW_H

@@ -13,16 +13,16 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-//    QSplashScreen *splash = new QSplashScreen;
-//    splash->setPixmap(QPixmap(":/icons/splash_bg.png"));
-//    splash->show();
+    QSplashScreen *splash = new QSplashScreen;
+    splash->setPixmap(QPixmap(":/icons/splash_bg.png"));
+    splash->show();
 
-//    LoginWindow loginWindow;
-//    QTimer::singleShot(2000,splash,SLOT(close()));
-//    QTimer::singleShot(2000,&loginWindow,SLOT(show()));
+    LoginWindow loginWindow;
+    QTimer::singleShot(3000,splash,SLOT(close()));
+    QTimer::singleShot(3000,&loginWindow,SLOT(show()));
 
-    HomeWindow homeWindow;
-  homeWindow.show();
+//    HomeWindow homeWindow;
+//  homeWindow.show();
 
     return a.exec();
 }

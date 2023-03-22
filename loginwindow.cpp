@@ -9,12 +9,17 @@
 #include <QNetworkRequest>
 #include <QDebug>
 #include "homewindow.h"
+#include "appconstant.h"
+#include <QString>
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Login");
+    setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
     ui->leUserId->setText("105418");
     ui->lePassword->setText("123456");
 }
@@ -47,9 +52,10 @@ void LoginWindow::makeRequest(QString leUserId, QString lePassword) {
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
 
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-    QNetworkReply *reply = manager->post(request, postData);
     // Connect the reply's finished() signal to a slot that will handle the response
+    QNetworkReply *reply = manager->post(request, postData);
     connect(reply, SIGNAL(finished()), this, SLOT(handleResponse()));
+
 }
 
 void LoginWindow::handleResponse() {

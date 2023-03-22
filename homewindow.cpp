@@ -4,13 +4,16 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QGroupBox>
+#include <QCheckBox>
+#include "appconstant.h"
 
 HomeWindow::HomeWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::HomeWindow)
 {
     ui->setupUi(this);
-    setFixedSize(400, 400);
+    setWindowTitle("Home");
+    setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
     QWidget *scrollableWidget = new QWidget;
 
@@ -19,7 +22,7 @@ HomeWindow::HomeWindow(QWidget *parent) :
 
     // Add a series of labels to the layout (these are the items that may not fit in the available space)
     for (int i = 1; i <= 20; i++) {
-        if(i % 2 == 0) {
+        if(i % 3 == 0) {
             // Create the label and line edit widgets
             QLabel *label = new QLabel("Question item: " + QString::number(i));
             QLineEdit *lineEdit = new QLineEdit;
@@ -32,8 +35,8 @@ HomeWindow::HomeWindow(QWidget *parent) :
 
             // Add the new vertical layout to the main scrollable layout
             scrollableLayout->addLayout(layout);
-        } else {
-            QLabel *label = new QLabel("Question item: " + QString::number(i));
+        } else if(i % 3 == 1){
+            QLabel *label = new QLabel("Question item for RadioButton: " + QString::number(i));
             // Create the group box for the first question
             QGroupBox *groupBox1 = new QGroupBox;
 
@@ -57,6 +60,32 @@ HomeWindow::HomeWindow(QWidget *parent) :
 
             scrollableLayout->addLayout(layout);
         }
+         else if(i % 3 == 2){
+            QLabel *label = new QLabel("Question item for CheckBox: " + QString::number(i));
+            // Create the group box for the first question
+            QGroupBox *groupBox1 = new QGroupBox;
+
+            // Create the radio buttons for the first question
+            QCheckBox *qcheckBox1a = new QCheckBox("CheckBox 1");
+            QCheckBox *qcheckBox1b = new QCheckBox("CheckBox 2");
+            QCheckBox *qcheckBox1c = new QCheckBox("CheckBox 3");
+
+            // Create a vertical layout for the first question's radio buttons
+            QVBoxLayout *layout1 = new QVBoxLayout;
+            layout1->addWidget(qcheckBox1a);
+            layout1->addWidget(qcheckBox1b);
+            layout1->addWidget(qcheckBox1c);
+
+            // Set the layout for the first question's group box
+            groupBox1->setLayout(layout1);
+
+            QVBoxLayout *layout = new QVBoxLayout;
+            layout->addWidget(label);
+            layout->addWidget(groupBox1);
+
+            scrollableLayout->addLayout(layout);
+        }
+
     }
 
     // Create a button and add it to a vertical layout
