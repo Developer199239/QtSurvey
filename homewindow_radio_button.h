@@ -24,7 +24,7 @@ public:
 
 private slots:
     void submitAnswers();
-//    void radioButtonClicked();
+    void radioButtonClicked();
 private:
     Ui::HomeWindow *ui;
     QList<QLineEdit *> m_answerFields;
